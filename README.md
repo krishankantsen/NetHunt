@@ -1,6 +1,3 @@
-Certainly! Below is a basic template for a README file for a Full Stack MERN Social Media App. Feel free to customize it based on your specific app features, technologies, and other relevant information.
-
-```markdown
 # Social Media App - Full Stack MERN
 
 ## Overview
