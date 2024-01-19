@@ -15,7 +15,6 @@ export const register = async (req, res) => {
       location,
       occupation,
     } = req.body;
-    console.log(req.body);
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
     const newUser = new User({
@@ -26,7 +25,7 @@ export const register = async (req, res) => {
       picturePath,
       friends:[],
       location,
-      occupation,
+      occupation, 
       viewedProfile: Math.floor(Math.random() * 1000),
       impressions: Math.floor(Math.random() * 1000),
     });
