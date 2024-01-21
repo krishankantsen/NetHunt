@@ -37,8 +37,9 @@ export const getFeedPosts = async (req, res) => {
 
 export const getUserPosts = async (req, res) => {
   try {
-    const { userId } = req.body;
-    const post = Post.find({ userId });
+    const { userId } = req.params;
+    console.log(userId)
+    const post =await Post.find({ userId });
     res.status(200).json(post);
   } catch (error) {
     res.status(404).json({ message: error.message });
@@ -64,6 +65,36 @@ export const likePost = async (req, res) => {
       { new: true }
     );
 
+    res.status(200).json(updatedPost);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+
+export const commentPost = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { commentbody,uname,picture} = req.body;
+    const post = await Post.findById(id);
+  // Create a new comment object
+  const newComment = {
+    commentBody:commentbody,
+    profilePic: picture,
+    name: uname,
+  };
+
+  // Add the new comment to the 'comments' array in the post
+  post.comments.push(newComment);
+
+  // Save the updated post
+  const updatedPost = await Post.findByIdAndUpdate(
+    id,
+    { comments: post.comments },
+    { new: true }
+  );
+
+    
     res.status(200).json(updatedPost);
   } catch (error) {
     res.status(404).json({ message: error.message });

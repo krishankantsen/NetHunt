@@ -124,8 +124,9 @@ const Navbar = () => {
         <Box
           position="fixed"
           right="0"
-          bottom="0"
-          height="100%"
+          top="0"
+          m="1"
+          height="auto"
           zIndex="10"
           maxWidth="500px"
           minWidth="300px"
@@ -147,6 +148,7 @@ const Navbar = () => {
             justifyContent="center"
             alignItems="center"
             gap="3rem"
+            height="auto"
           >
             <IconButton
               onClick={() => dispatch(setMode())}
@@ -167,6 +169,7 @@ const Navbar = () => {
                 sx={{
                   backgroundColor: neutralLight,
                   width: "150px",
+                  mb:"10px",
                   borderRadius: "0.25rem",
                   p: "0.25rem 1rem",
                   "& .MuiSvgIcon-root": {
