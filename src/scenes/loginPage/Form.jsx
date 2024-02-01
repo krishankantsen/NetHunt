@@ -11,7 +11,7 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setLogin } from "state";
 import Dropzone from "react-dropzone";
 import FlexBetween from "components/FlexBetween";
@@ -55,6 +55,7 @@ const Form = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const isLogin = pageType === "login";
   const isRegister = pageType === "register";
+  const token =useSelector((state)=>state.token)
 
   const register = async (values, onSubmitProps) => {
     // this allows us to send form info with image
@@ -65,7 +66,7 @@ const Form = () => {
     formData.append("picturePath", values.picture.name);
 
     const savedUserResponse = await fetch(
-      "http://localhost:5000/auth/register",
+      "https://nethunt-admin.onrender.com/auth/register",
       {
         method: "POST",
         body: formData,
@@ -87,12 +88,13 @@ const Form = () => {
   };
 
   const login = async (values, onSubmitProps) => {
-    const loggedInResponse = await fetch("http://localhost:5000/auth/login", {
+    const loggedInResponse = await fetch("https://nethunt-admin.onrender.com/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
     });
     const loggedIn = await loggedInResponse.json();
+    console.log(loggedIn)
     onSubmitProps.resetForm();
     if (loggedIn) {
       dispatch(
@@ -101,6 +103,7 @@ const Form = () => {
           token: loggedIn.token,
         })
       );
+      console.log(token);
       navigate("/home");
       toast.success("Login Success",{
         duration: 1000,

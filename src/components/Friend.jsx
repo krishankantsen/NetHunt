@@ -24,7 +24,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
       console.log("You cant add yurself")
     }else{
     const response = await fetch(
-      `http://localhost:5000/users/${_id}/${friendId}`,
+      `https://nethunt-admin.onrender.com/users/${_id}/${friendId}`,
       {
         method: "PATCH",
         headers: {
