@@ -58,7 +58,7 @@ const PostWidget = ({
     dispatch(setPost({ post: updatedPost }));
   };
   const handleComment=async()=>{
-    const response=await fetch("https://nethunt-admin.onrender.com/posts/${postId}/comment`,{
+    const response=await fetch(`https://nethunt-admin.onrender.com/posts/${postId}/comment`,{
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
