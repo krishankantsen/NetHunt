@@ -46,7 +46,7 @@ const PostWidget = ({
   const main = palette.neutral.main;
   const primary = palette.primary.main;
   const patchLike = async () => {
-    const response = await fetch(`http://localhost:5000/posts/${postId}/like`, {
+    const response = await fetch(`https://nethunt-admin.onrender.com/posts/${postId}/like`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -58,7 +58,7 @@ const PostWidget = ({
     dispatch(setPost({ post: updatedPost }));
   };
   const handleComment=async()=>{
-    const response=await fetch(`http://localhost:5000/posts/${postId}/comment`,{
+    const response=await fetch("https://nethunt-admin.onrender.com/posts/${postId}/comment`,{
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
