@@ -158,7 +158,7 @@ const PostWidget = ({
             {comments.map((comment, i) => (
             <Box key={`${name}-${i}`}>
               <Divider />
-              <Box display={"flex"} gap={1}><img src={`https://nethunt-admin.onrender.com/assets/${comment.profilePic}`} alt="profile_pic" width={"30px"} height={"30px"}/>
+              <Box display={"flex"} gap={1}><img src={`https://nethunt-admin.onrender.com/assets/${comment.profilePic}`} alt="profile_pic" width={"30px"} height={"30px"} style={{borderRadius:"50%"}}/>
               <Typography fontWeight={"bold"}>{comment.name}</Typography></Box>
               <Typography sx={{ color:main, m: "0.5rem 0", pl: "1rem" }}>
                 {comment.commentBody}
