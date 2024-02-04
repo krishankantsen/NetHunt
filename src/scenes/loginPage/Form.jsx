@@ -75,7 +75,7 @@ const Form = () => {
     const savedUser = await savedUserResponse.json();
     onSubmitProps.resetForm();
 
-    if (savedUser) {
+    if (savedUser.success) {
       setPageType("login");
       toast.success("Register Success",{
         duration: 1000,
@@ -96,7 +96,7 @@ const Form = () => {
     const loggedIn = await loggedInResponse.json();
     console.log(loggedIn)
     onSubmitProps.resetForm();
-    if (loggedIn) {
+    if (loggedIn.success) {
       dispatch(
         setLogin({
           user: loggedIn.user,
