@@ -183,7 +183,7 @@ const Navbar = () => {
                 input={<InputBase />}
               >
                 <MenuItem value={fullName}>
-                  <Typography>{fullName}</Typography>
+                  <Typography onClick={() => navigate(`/profile/${user._id}`)}>{fullName}</Typography>
                 </MenuItem>
                 <MenuItem onClick={() => {
                   dispatch(setLogout()
